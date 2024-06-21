@@ -1,0 +1,225 @@
+<html>
+	<head>
+		<title>Fallout 4</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style id="style-story" type="text/css">
+			body 
+			{
+			  background-color: #333;
+				max-width: max-content;
+				margin: auto;
+			}
+			.mainMap
+			{
+				height:100vh;
+				width: 100%;
+				background-size: contain;  
+				background-repeat: no-repeat;
+			}
+			#map
+			{
+				height:100vh;
+			}
+			.settlement
+			{
+				position: relative;
+				width:2%;
+				height:2%;
+				background-image: url(pin.png);
+				background-repeat: no-repeat;
+				background-size: 100%;				
+			}
+			
+			.info {
+				visibility: hidden;
+				width: 200px;
+				background-color: #155917;
+				border: 2px solid #16DC1D;
+				opacity: 0.6;			  			  
+				color: #16DC1D;
+				text-align: right;
+				padding: 3px;
+				border-radius: 3px;
+				font-weight:bold;
+			 
+				/* Position the tooltip text - see examples below! */
+				position: absolute;
+				z-index: 1;
+			}
+			.settlement:hover .info {
+			    visibility: visible;
+			}
+			t:after {
+				background-image: url(pop.png);
+				background-size: 100%;
+				background-repeat: no-repeat;
+				display:inline-block;
+				width: 16px; 
+				height: 20px;
+				content:"";
+				vertical-align:bottom;
+			}
+			d:after {
+				background-image: url(def.png);
+				background-size: 100%;
+				background-repeat: no-repeat;
+				display:inline-block;
+				width: 16px; 
+				height: 20px;
+				content:"";
+				vertical-align:bottom;
+			}		
+
+
+			/* The Modal (background) */
+			.modal {
+			  display: none;
+			  position: fixed;
+			  z-index: 1;
+			  padding-top: 100px;
+			  left: 0;
+			  top: 0;
+			  width: 100%;
+			  height: 100%;
+			  overflow: auto;
+			  background-color: black;
+			}
+
+			/* Modal Content */
+			.modal-content {
+			  position: relative;
+			  background-color: #fefefe;
+			  margin: auto;
+			  padding: 0;
+			  width: 90%;
+			  max-width: 1200px;
+			}
+
+			/* The Close Button */
+			.close {
+			  color: white;
+			  position: absolute;
+			  top: 10px;
+			  right: 25px;
+			  font-size: 35px;
+			  font-weight: bold;
+			}
+			.close:hover,.close:focus {
+			  color: #999;
+			  text-decoration: none;
+			  cursor: pointer;
+			}
+
+			.cursor {cursor: pointer;}
+
+			/* Next & previous buttons */
+			.prev,.next {
+			  cursor: pointer;
+			  position: absolute;
+			  top: 50%;
+			  width: auto;
+			  padding: 16px;
+			  margin-top: -50px;
+			  color: white;
+			  font-weight: bold;
+			  font-size: 20px;
+			  transition: 0.6s ease;
+			  border-radius: 0 3px 3px 0;
+			  user-select: none;
+			  -webkit-user-select: none;
+			}
+
+			/* Position the "next button" to the right */
+			.next {right: 0;border-radius: 3px 0 0 3px;}
+			.prev:hover,.next:hover {background-color: rgba(0, 0, 0, 0.8);}
+			.caption-container {
+			  text-align: center;
+			  background-color: black;
+			  padding: 2px 16px;
+			  color: white;
+			}
+
+			.demo {opacity: 0.6;}
+			.active,.demo:hover {opacity: 1;}
+			img.hover-shadow {transition: 0.3s;}
+			.hover-shadow:hover {box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}		
+
+			/*SETTLEMENT POSITIONS*/
+			
+			#sanctuary{
+				bottom:95.3%;
+				left:13.5%;
+			}			
+			#redrocket			{
+				bottom:92.7%;
+				left:18%;
+			}			
+			#tenpines			{
+				bottom:98.5%;
+				left:36.8%;
+			}			
+			#starlight			{
+				bottom:86.5%;
+				left:30.7%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mainMap" class="mainMap">
+			<img id="map" src="f4map.png">
+			<div id="sanctuary" class="settlement">
+				<span class="info" onclick="openModal('images/sanctuary1.png');"><i class="fa fa-camera"></i> Sanctuary <br/><t>6/9</t><d>11</d></span>				
+			</div>
+			<div id="redrocket" class="settlement">
+				<span class="info" onclick="openModal('images/redrocket1.png');"><i class="fa fa-camera"></i> Red Rocket <br/><t>0/1</t><d>5</d></span>				
+			</div>
+			<div id="tenpines" class="settlement">
+				<span class="info" onclick="openModal('images/tenpines1.png');"><i class="fa fa-camera"></i> Tenpines Bluff <br/><t>13/13</t><d>87</d></span>				
+			</div>
+			<div id="starlight" class="settlement">
+				<span class="info" onclick="openModal('images/starlight1.png');"><i class="fa fa-camera"></i> Starlight Drive-In <br/><t>10/16</t><d>44</d></span>				
+			</div>
+		</div>
+		
+		<div id="myModal" class="modal">
+			<span class="close cursor" onclick="closeModal()">&times;</span>
+			<div class="modal-content">
+				<div class="mySlides">
+					<img id="masterImage" src="" style="width:100%">
+				</div>   
+				<a class="prev" onclick="showSlides(-1)">&#10094;</a>
+				<a class="next" onclick="showSlides(1)">&#10095;</a>
+			</div>
+		</div>
+		<script>
+			function openModal(n) {
+			  document.getElementById("myModal").style.display = "block";
+			  document.getElementById("masterImage").src=n;
+			}
+
+			function closeModal() {
+			  document.getElementById("myModal").style.display = "none";
+			  document.getElementById("masterImage").src="";
+			}					
+			
+			function checkImage(imageSrc, good, bad) {
+				var img = new Image();
+				img.onload = good; 
+				img.onerror = bad;
+				img.src = imageSrc;
+			}
+			
+			function showSlides(n) {
+			  var master = document.getElementById("masterImage");	
+			  // Getting last character using char at
+			  var currentIndex = master.src.charAt(master.src.length - 5);
+			  var masterText = master.src.substring(0, master.src.length-5);			  
+			  var nextIndex = +currentIndex + +n;
+			  var nextSRC = masterText + nextIndex + ".png";
+			  
+			  checkImage(nextSRC, function(){ master.src=nextSRC; }, function(){ master.src=masterText + "1.png"; } );
+			}
+		</script>
+	</body>
+</html>
+
