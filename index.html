@@ -12,6 +12,7 @@
 			}
 			.mainMap
 			{
+				position:relative;
 				height:100vh;
 				width: 100%;
 				background-size: contain;  
@@ -23,14 +24,10 @@
 			}
 			.settlement
 			{
-				position: relative;
-				width:2%;
-				height:2%;
-				background-image: url(pin.png);
-				background-repeat: no-repeat;
-				background-size: 100%;				
+				position: absolute;			  
+				color: #16DC1D;			
 			}
-			.fa-camera{
+			.fa-camera, .fa-wrench{
   				position: inherit;
 				left: 5px;
 				top: 5px;
@@ -39,7 +36,7 @@
 			  color: #45F74B;
 			  text-decoration: none;
 			  cursor: pointer;
-			}
+			}	
 			.info {
 				visibility: hidden;
 				width: 200px;
@@ -58,31 +55,17 @@
 				top: -10px;
 				z-index: 1;
 			}
+			.empty{ 
+				color: #99232B;
+			}
+			.none{
+				background-color: #99232B;
+				border: 2px solid #FF3A4B;  
+				color: #FF3A4B;
+			}
 			.settlement:hover .info {
 			    visibility: visible;
 			}
-			t:after {
-				background-image: url(pop.png);
-				background-size: 100%;
-				background-repeat: no-repeat;
-				display:inline-block;
-				width: 16px; 
-				height: 20px;
-				content:"";
-				vertical-align:bottom;
-			}
-			d:after {
-				background-image: url(def.png);
-				background-size: 100%;
-				background-repeat: no-repeat;
-				display:inline-block;
-				margin-left: 3px;
-				width: 16px; 
-				height: 18px;
-				content:"";
-				vertical-align:bottom;
-			}		
-
 
 			/* The Modal (background) */
 			.modal {
@@ -160,135 +143,205 @@
 			/*SETTLEMENT POSITIONS*/
 			
 			#sanctuary{
-				bottom:95.3%;
-				left:13.5%;
+				bottom:93.5%;
+				left:14%;
 			}			
 			#redrocket			{
-				bottom:92.7%;
+				bottom:89.3%;
 				left:18%;
 			}			
 			#tenpines			{
-				bottom:98.5%;
-				left:36.8%;
+				bottom:93%;
+				left:36.9%;
 			}			
 			#starlight			{
-				bottom:86.5%;
-				left:30.7%;
+				bottom:79%;
+				left:30.8%;
 			}		
 			#abernathy			{
-				bottom:93.1%;
-				left:13.2%;
+				bottom:83.3%;
+				left:13.4%;
 			}		
 			#sunshine			{
-				bottom:83%;
-				left:8.2%;
-			}		
+				bottom:71.2%;
+				left:8.5%;
+			}				
 			#zimonja			{
-				bottom:112%;
-				left:43%;
+				bottom:98%;
+				left:43.2%;
 			}	
 			#covenant			{
-				bottom:89.2%;
-				left:44.5%;
+				bottom:73.4%;
+				left:44.7%;
 			}
 			#taffington			{
-				bottom:91.9%;
-				left:50.1%;
+				bottom:74.3%;
+				left:50.3%;
 			}
 			#greentop			{
-				bottom:103%;
-				left:60.5%;
+				bottom:83%;
+				left:60.7%;
 			}
 			#crossing			{
-				bottom:88.2%;
-				left:65.1%;
+				bottom:66.8%;
+				left:65.3%;
 			}
 			#finch			{
-				bottom:97.6%;
-				left:72.3%;
+				bottom:74.2%;
+				left:72.5%;
 			}
 			#slog			{
-				bottom:110.9%;
-				left:72.9%;
+				bottom:85%;
+				left:73%;
 			}
 			#coastal			{
-				bottom:121.3%;
-				left:79.4%;
+				bottom:93.5%;
+				left:79.5%;
 			}
 			#kingsport			{
-				bottom:109.9%;
-				left:88.4%;
+				bottom:80%;
+				left:88.5%;
 			}
 			#manor			{
-				bottom:101.1%;
+				bottom:69.3%;
 				left:89%;
 			}
 			#beach			{
-				bottom:88%;
-				left:77%;
+				bottom:54.5%;
+				left:77.1%;
 			}
 			#greygarden			{
-				bottom:96.9%;
-				left:25.8%;
+				bottom:61%;
+				left:26%;
+			}
+			#oberland			{
+				bottom:50%;
+				left:27%;
+			}
+			#hangman			{
+				bottom:44.5%;
+				left:38.7%;
+			}
+			#egret			{
+				bottom:25%;
+				left:34.4%;
+			}
+			#sommerville			{
+				bottom:13%;
+				left:33.3%;
+			}
+			#jamaica			{
+				bottom:24%;
+				left:53%;
+			}
+			#castle			{
+				bottom:32%;
+				left:69.7%;
+			}
+			#island			{
+				bottom:25.5%;
+				left:81.8%;
+			}
+			#warwick			{
+				bottom:19.7%;
+				left:73.6%;
+			}
+			#vault			{
+				bottom:15.8%;
+				left:55.3%;
+			}
+			#murkwater			{
+				bottom:10%;
+				left:51%;
 			}
 		</style>
 	</head>
 	<body>
 		<div id="mainMap" class="mainMap">
 			<img id="map" src="f4map.png">
-			<div id="sanctuary" class="settlement">
-				<span class="info" onclick="openModal('images/sanctuary1.png');"><i class="fa fa-camera"></i> Sanctuary Hills <br/><t>6/9</t> <d>11</d></span>				
+			<div id="sanctuary" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/sanctuary1.png');"><i class="fa fa-camera"></i> Sanctuary Hills <br/>6/9 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;11 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="redrocket" class="settlement">
-				<span class="info" onclick="openModal('images/redrocket1.png');"><i class="fa fa-camera"></i> Red Rocket <br/><t>0/1</t> <d>5</d></span>				
+			<div id="redrocket" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/redrocket1.png');"><i class="fa fa-camera"></i> Red Rocket <br/>0/1 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;5 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="tenpines" class="settlement">
-				<span class="info" onclick="openModal('images/tenpines1.png');"><i class="fa fa-camera"></i> Tenpines Bluff <br/><t>13/13</t> <d>87</d></span>				
+			<div id="tenpines" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/tenpines1.png');"><i class="fa fa-camera"></i> Tenpines Bluff <br/>13/13 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;87 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="starlight" class="settlement">
-				<span class="info" onclick="openModal('images/starlight1.png');"><i class="fa fa-camera"></i> Starlight Drive-In <br/><t>10/16</t> <d>44</d></span>				
+			<div id="starlight" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/starlight1.png');"><i class="fa fa-camera"></i> Starlight Drive-In <br/>10/16 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;44 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="abernathy" class="settlement">
-				<span class="info" onclick="openModal('images/abernathy1.png');"><i class="fa fa-camera"></i> Abernathy Farm <br/><t>13/12</t> <d>160</d></span>				
+			<div id="abernathy" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/abernathy1.png');"><i class="fa fa-camera"></i> Abernathy Farm <br/>13/12 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;160 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="sunshine" class="settlement">
-				<span class="info"> Sunshine Tidings <br/><t>0/7</t> <d>0</d></span>				
+			<div id="sunshine" class="settlement empty"><i class="fa fa-home"></i>
+				<span class="info none"><i class="fa fa-wrench"></i> Sunshine Tidings <br/>0/7 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;0 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="zimonja" class="settlement">
-				<span class="info" onclick="openModal('images/zimonja1.png');"><i class="fa fa-camera"></i> Zimonja Outpost <br/><t>9/9</t> <d>60</d></span>				
+			<div id="zimonja" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/zimonja1.png');"><i class="fa fa-camera"></i> Zimonja Outpost <br/>9/9 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;60 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="covenant" class="settlement">
-				<span class="info"> Covenant <br/><t>0/9</t> <d>0</d></span>				
+			<div id="covenant" class="settlement empty"><i class="fa fa-home"></i>
+				<span class="info none"><i class="fa fa-wrench"></i> Covenant <br/>0/9 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;0 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="taffington" class="settlement">
-				<span class="info"> Taffington Boathouse <br/><t>0/3</t> <d>0</d></span>				
+			<div id="taffington" class="settlement empty"><i class="fa fa-home"></i>
+				<span class="info none"><i class="fa fa-wrench"></i> Taffington Boathouse <br/>0/3 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;0 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="greentop" class="settlement">
-				<span class="info" onclick="openModal('images/greentop1.png');"><i class="fa fa-camera"></i> Greentop Nursery <br/><t>13/16</t> <d>73</d></span>				
+			<div id="greentop" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/greentop1.png');"><i class="fa fa-camera"></i> Greentop Nursery <br/>13/16 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;73 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="crossing" class="settlement">
-				<span class="info" onclick="openModal('images/crossing1.png');"><i class="fa fa-camera"></i> Country Crossing <br/><t>13/13</t> <d>54</d></span>				
+			<div id="crossing" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/crossing1.png');"><i class="fa fa-camera"></i> Country Crossing <br/>13/13 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;54 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="finch" class="settlement">
-				<span class="info" onclick="openModal('images/finch1.png');"><i class="fa fa-camera"></i> Finch Farm <br/><t>13/13</t> <d>36</d></span>				
+			<div id="finch" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/finch1.png');"><i class="fa fa-camera"></i> Finch Farm <br/>13/13 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;36 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="slog" class="settlement">
-				<span class="info" onclick="openModal('images/slog1.png');"><i class="fa fa-camera"></i> The Slog <br/><t>19/20</t> <d>30</d></span>				
+			<div id="slog" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/slog1.png');"><i class="fa fa-camera"></i> The Slog <br/>19/20 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;30 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="coastal" class="settlement">
-				<span class="info" onclick="openModal('images/coastal1.png');"><i class="fa fa-camera"></i> Coastal Cottage <br/><t>6/13</t> <d>29</d></span>				
+			<div id="coastal" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/coastal1.png');"><i class="fa fa-camera"></i> Coastal Cottage <br/>6/13 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;29 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="kingsport" class="settlement">
-				<span class="info"> Kingsport Lighthouse <br/><t>0/0</t> <d>0</d></span>				
+			<div id="kingsport" class="settlement empty"><i class="fa fa-home"></i>
+				<span class="info none"><i class="fa fa-wrench"></i> Kingsport Lighthouse <br/>0/0 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;0 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="manor" class="settlement">
-				<span class="info"> Croup Manor <br/><t>0/0</t> <d>0</d></span>				
+			<div id="manor" class="settlement empty"><i class="fa fa-home"></i>
+				<span class="info none"><i class="fa fa-wrench"></i> Croup Manor <br/>0/0 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;0 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="beach" class="settlement">
-				<span class="info" onclick="openModal('images/beach1.png');"><i class="fa fa-camera"></i> Nordhagen Beach <br/><t>10/10</t> <d>44</d></span>				
+			<div id="beach" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/beach1.png');"><i class="fa fa-camera"></i> Nordhagen Beach <br/>10/10 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;44 <i class="fa fa-shield"></i></span>				
 			</div>
-			<div id="greygarden" class="settlement">
-				<span class="info" onclick="openModal('images/greygarden1.png');"><i class="fa fa-camera"></i> GreyGarden <br/><t>6/0</t> <d>20</d></span>				
+			<div id="greygarden" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/greygarden1.png');"><i class="fa fa-camera"></i> GreyGarden <br/>6/0 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;20 <i class="fa fa-shield"></i></span>				
+			</div>
+			<div id="oberland" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/oberland1.png');"><i class="fa fa-camera"></i> Oberland Station <br/>10/13 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;74 <i class="fa fa-shield"></i></span>				
+			</div>
+			<div id="hangman" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/hangman1.png');"><i class="fa fa-camera"></i> Hangman's Alley <br/>10/10 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;28 <i class="fa fa-shield"></i></span>				
+			</div>
+			<div id="egret" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/egret1.png');"><i class="fa fa-camera"></i> Egret Tours Marina <br/>6/6 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;6 <i class="fa fa-shield"></i></span>				
+			</div>
+			<div id="sommerville" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/sommerville1.png');"><i class="fa fa-camera"></i> Sommerville Place <br/>6/6 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;6 <i class="fa fa-shield"></i></span>				
+			</div>
+			<div id="jamaica" class="settlement empty"><i class="fa fa-home"></i>
+				<span class="info none"><i class="fa fa-wrench"></i> Jamaica Plain <br/>0/1 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;0 <i class="fa fa-shield"></i></span>				
+			</div>
+			<div id="castle" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/castle1.png');"><i class="fa fa-camera"></i> The Castle <br/>13/13 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;36 <i class="fa fa-shield"></i></span>				
+			</div>
+			<div id="island" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/island1.png');"><i class="fa fa-camera"></i> Spectacle Island <br/>5/4 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;0 <i class="fa fa-shield"></i></span>				
+			</div>
+			<div id="warwick" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/warwick1.png');"><i class="fa fa-camera"></i> Warwick Homestead <br/>13/13 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;44 <i class="fa fa-shield"></i></span>				
+			</div>
+			<div id="vault" class="settlement"><i class="fa fa-home"></i>
+				<span class="info" onclick="openModal('images/vault1.png');"><i class="fa fa-camera"></i> Vault 88 <br/>15+/20 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;73 <i class="fa fa-shield"></i></span>				
+			</div>
+			<div id="murkwater" class="settlement empty"><i class="fa fa-home"></i>
+				<span class="info none"><i class="fa fa-wrench"></i> Murkwater Construction Site <br/>0/0 <i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;0 <i class="fa fa-shield"></i></span>				
 			</div>
 		</div>
 		
